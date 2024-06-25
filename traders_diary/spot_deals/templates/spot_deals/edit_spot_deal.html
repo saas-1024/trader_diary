@@ -1,0 +1,45 @@
+{% extends 'spot_deals/base.html' %}
+
+{% block content %}
+<p> Страница редактирования сделки </p>
+<ul class="edit-list-spot-deals-container">
+<!--	{% for s in deals %}-->
+			<div>
+				<div class="edit-list-spot-deals-column">
+					<div class="edit-list-spot-deals-item">
+						<div>            Актив</div>
+						<div>      Дата сделки</div>
+						<div>   Сторона сделки</div>
+						<div>      Комментарий</div>
+						<div>            Биржа</div>
+						<div>     Цена покупки</div>
+						<div>Количество актива</div>
+						<div>            Сумма</div>
+						<div>         Комиссия</div>
+					</div>
+
+					<div>
+						<div>{{s.asset_name}}</div>
+						<div>{{s.date_deal}}</div>
+						<div>{{s.trade_side}}</div>
+						<div>{{s.comment}}</div>
+						<div>{{s.exchange}}</div>
+						<div>{{s.asset_price}}</div>
+						<div>{{s.asset_amount}}</div>
+						<div>{{s.usd_amount}}</div>
+						<div>{{s.comission}}</div>
+					</div>
+				</div>
+
+
+			{% autoescape on %}
+			{{s.content|linebreaks|truncatewords:50}}
+			{% endautoescape %}
+			<div class="clear"></div>
+<!--			<p class="link-read-deal"><a href="{{ s.edit_deal }}">Редактировать</a></p>-->
+				<p class="link-read-deal"><a href="{{ s.save_deal }}">Сохранить</a></p>
+			</div>
+<!--	{% endfor %}-->
+</ul>
+<h1></h1>
+{% endblock %}

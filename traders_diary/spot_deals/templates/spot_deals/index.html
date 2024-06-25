@@ -1,0 +1,16 @@
+{% extends 'spot_deals/base.html' %}
+
+{% block content %}
+<ul class="list-spot-deals">
+<!--    deals is a key from context -->
+    {% for s in deals %}
+    <li><h2>{{s.asset_name}}</h2>
+        {% autoescape on %}
+        {{s.content|linebreaks|truncatewords:50}}
+        {% endautoescape %}
+        <div class="clear"></div>
+        <p class="link-read-deal"><a href="{{ s.get_absolute_url }}">Посмотреть сделку</a></p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

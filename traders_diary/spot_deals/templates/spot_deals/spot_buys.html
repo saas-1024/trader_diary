@@ -1,0 +1,22 @@
+{% extends 'spot_deals/base.html' %}
+
+{% block content %}
+<p> Страница моих спотовых покупок </p>
+<ul class="list-spot-deals">
+	{% for s in deals %}
+			<li><p>{{s.asset_name}}
+				{{s.date_deal}}
+				{{s.trade_side}}
+				{{s.comment}}
+				{{s.usd_amount}}</p>
+
+	{% autoescape on %}
+	{{s.content|linebreaks|truncatewords:50}}
+	{% endautoescape %}
+			<div class="clear"></div>
+			<p class="link-read-deal"><a href="{{ s.get_absolute_url }}">Просмотр покупки</a></p>
+			</li>
+	{% endfor %}
+</ul>
+<h1></h1>
+{% endblock %}
